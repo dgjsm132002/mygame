@@ -1,20 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="my">
 <head>
-    <title>Laphet Thoke Game</title>
+    <meta charset="UTF-8">
+    <title>လက်ဖက်သုပ်ဂိမ်း</title>
     <style>
-        body { text-align: center; font-family: sans-serif; }
-        #game-area { width: 300px; height: 300px; border: 2px solid #333; margin: auto; position: relative; background: #e8f5e9; }
+        body { background-color: #f9f9f9; text-align: center; font-family: 'Arial', sans-serif; padding: 50px; }
+        .game-box { background: white; width: 320px; margin: auto; padding: 25px; border-radius: 20px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1); }
+        h1 { color: #27ae60; }
+        button { padding: 12px 18px; margin: 6px; cursor: pointer; background: #27ae60; color: white; border: none; border-radius: 8px; font-size: 14px; transition: 0.3s; }
+        button:hover { background: #2ecc71; }
+        .bowl { border: 3px dashed #27ae60; margin: 25px 0; padding: 15px; min-height: 60px; border-radius: 10px; background: #fdfdfd; }
+        .mix-btn { background: #e67e22; width: 100%; font-size: 18px; font-weight: bold; margin-top: 10px; }
+        .mix-btn:hover { background: #d35400; }
+        #status { color: #d35400; font-weight: bold; margin-top: 15px; }
     </style>
 </head>
 <body>
-    <h1>လက်ဖက်သုပ် ရောကြမယ်</h1>
-    <div id="game-area">
-        <p>လက်ဖက်သုပ် ပစ္စည်းများ ပြင်ဆင်ပါ</p>
+
+    <div class="game-box">
+        <h1>မြန်မာ့လက်ဖက်သုပ်</h1>
+        <div id="ingredients">
+            <button onclick="add('လက်ဖက်')">လက်ဖက်</button>
+            <button onclick="add('ပဲကြော်')">ပဲကြော်</button>
+            <button onclick="add('ဆီ')">ဆီ</button>
+            <button onclick="add('ပုဇွန်ခြောက်')">ပုဇွန်ခြောက်</button>
+            <button onclick="add('နှမ်း')">နှမ်း</button>
+        </div>
+        
+        <div class="bowl">
+            <h3>ပါဝင်ပစ္စည်းများ:</h3>
+            <p id="list">ဘာမှမထည့်ရသေးပါ</p>
+        </div>
+
+        <button class="mix-btn" onclick="mix()">သုပ်မည်!</button>
+        <h2 id="status"></h2>
     </div>
+
     <script>
-        console.log("လက်ဖက်သုပ်ဂိမ်း စတင်ပါပြီ");
-        // ဒီနေရာမှာ သင့်လက်ဖက်သုပ်ဂိမ်းရဲ့ Logic တွေရှိပါလိမ့်မယ်
+        let myIngredients = [];
+
+        function add(item) {
+            if (myIngredients.length < 5) {
+                myIngredients.push(item);
+                document.getElementById('list').innerText = myIngredients.join(' + ');
+            } else {
+                alert("ပန်းကန်ပြည့်သွားပါပြီ!");
+            }
+        }
+
+        function mix() {
+            if (myIngredients.length === 0) {
+                document.getElementById('status').innerText = "ဘာမှ မထည့်ဘဲ ဘယ်လိုသုပ်မလဲ!";
+            } else {
+                document.getElementById('status').innerText = "အရသာရှိတဲ့ လက်ဖက်သုပ် ရပါပြီ! လက်ရာကောင်းတယ်!";
+            }
+        }
     </script>
 </body>
 </html>
