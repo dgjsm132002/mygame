@@ -1,48 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Myanmar Traditional Festivals Quiz</title>
+    <title>Laphet Thoke Game</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background: #f0f2f5; padding: 20px; }
-        .container { max-width: 500px; background: white; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        button { display: block; width: 100%; padding: 10px; margin: 5px 0; cursor: pointer; }
+        body { text-align: center; font-family: sans-serif; }
+        #game-area { width: 300px; height: 300px; border: 2px solid #333; margin: auto; position: relative; background: #e8f5e9; }
     </style>
 </head>
 <body>
-    <div class="container" id="game">
-        <h1>Myanmar Festivals Quiz</h1>
-        <div id="quiz">
-            <h3 id="question">Loading...</h3>
-            <div id="answers"></div>
-        </div>
+    <h1>လက်ဖက်သုပ် ရောကြမယ်</h1>
+    <div id="game-area">
+        <p>လက်ဖက်သုပ် ပစ္စည်းများ ပြင်ဆင်ပါ</p>
     </div>
     <script>
-        const quizData = [
-            { q: "What do people offer to the Buddha during the Thadingyut Festival?", a: ["Oil lamps", "Water", "Flowers", "Incense"], correct: 0 },
-            { q: "What is the main activity during the Thingyan festival?", a: ["Water splashing", "Flying lanterns", "Offering alms", "Sand pagodas"], correct: 0 }
-        ];
-        let currentQ = 0, score = 0;
-        function loadQ() {
-            if(currentQ < quizData.length) {
-                document.getElementById("question").innerText = quizData[currentQ].q;
-                const ansDiv = document.getElementById("answers");
-                ansDiv.innerHTML = "";
-                quizData[currentQ].a.forEach((opt, i) => {
-                    let btn = document.createElement("button");
-                    btn.innerText = opt;
-                    btn.onclick = () => {
-                        if(i === quizData[currentQ].correct) score++;
-                        currentQ++;
-                        loadQ();
-                    };
-                    ansDiv.appendChild(btn);
-                });
-            } else {
-                document.getElementById("game").innerHTML = `<h2>Quiz Completed!</h2><p>Score: ${score} / ${quizData.length}</p><button onclick="location.reload()">Try Again</button>`;
-            }
-        }
-        loadQ();
+        console.log("လက်ဖက်သုပ်ဂိမ်း စတင်ပါပြီ");
+        // ဒီနေရာမှာ သင့်လက်ဖက်သုပ်ဂိမ်းရဲ့ Logic တွေရှိပါလိမ့်မယ်
     </script>
 </body>
 </html>
