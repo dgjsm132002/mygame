@@ -1,60 +1,55 @@
 <!DOCTYPE html>
-<html lang="my">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>လက်ဖက်သုပ်ဂိမ်း</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家鄉傳統美食大主廚</title>
     <style>
-        body { background-color: #f9f9f9; text-align: center; font-family: 'Arial', sans-serif; padding: 50px; }
-        .game-box { background: white; width: 320px; margin: auto; padding: 25px; border-radius: 20px; box-shadow: 0px 5px 15px rgba(0,0,0,0.1); }
-        h1 { color: #27ae60; }
-        button { padding: 12px 18px; margin: 6px; cursor: pointer; background: #27ae60; color: white; border: none; border-radius: 8px; font-size: 14px; transition: 0.3s; }
-        button:hover { background: #2ecc71; }
-        .bowl { border: 3px dashed #27ae60; margin: 25px 0; padding: 15px; min-height: 60px; border-radius: 10px; background: #fdfdfd; }
-        .mix-btn { background: #e67e22; width: 100%; font-size: 18px; font-weight: bold; margin-top: 10px; }
-        .mix-btn:hover { background: #d35400; }
-        #status { color: #d35400; font-weight: bold; margin-top: 15px; }
+        body { font-family: 'Arial', sans-serif; background-color: #fff9e6; text-align: center; padding: 20px; }
+        .game-container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 20px; border: 3px solid #ffa500; }
+        h1 { color: #8b4513; }
+        button { background-color: #ffa500; color: white; border: none; padding: 10px 15px; margin: 5px; border-radius: 10px; cursor: pointer; }
+        #result { margin-top: 20px; font-weight: bold; color: #d2691e; }
     </style>
 </head>
 <body>
 
-    <div class="game-box">
-        <h1>မြန်မာ့လက်ဖက်သုပ်</h1>
-        <div id="ingredients">
-            <button onclick="add('လက်ဖက်')">လက်ဖက်</button>
-            <button onclick="add('ပဲကြော်')">ပဲကြော်</button>
-            <button onclick="add('ဆီ')">ဆီ</button>
-            <button onclick="add('ပုဇွန်ခြောက်')">ပုဇွန်ခြောက်</button>
-            <button onclick="add('နှမ်း')">နှမ်း</button>
-        </div>
-        
-        <div class="bowl">
-            <h3>ပါဝင်ပစ္စည်းများ:</h3>
-            <p id="list">ဘာမှမထည့်ရသေးပါ</p>
-        </div>
+<div class="game-container">
+    <h1>🔍 家鄉傳統美食大主廚</h1>
+    <p>我的文化，我的遊戲</p>
+    <p>請憑藉記憶調配出最道地的傳統美食配方：</p>
 
-        <button class="mix-btn" onclick="mix()">သုပ်မည်!</button>
-        <h2 id="status"></h2>
+    <div id="ingredients">
+        <button onclick="select('發酵茶葉')">發酵茶葉</button>
+        <button onclick="select('酥炸豆類')">酥炸豆類</button>
+        <button onclick="select('番茄')">番茄</button>
+        <button onclick="select('花生')">花生</button>
+        <button onclick="select('辣椒')">辣椒</button>
     </div>
 
-    <script>
-        let myIngredients = [];
+    <div id="bowl">
+        <p>目前配方: <span id="mix">無</span></p>
+    </div>
 
-        function add(item) {
-            if (myIngredients.length < 5) {
-                myIngredients.push(item);
-                document.getElementById('list').innerText = myIngredients.join(' + ');
-            } else {
-                alert("ပန်းကန်ပြည့်သွားပါပြီ!");
-            }
-        }
+    <button onclick="check()">開始烹飪挑戰</button>
+    <p id="result"></p>
+</div>
 
-        function mix() {
-            if (myIngredients.length === 0) {
-                document.getElementById('status').innerText = "ဘာမှ မထည့်ဘဲ ဘယ်လိုသုပ်မလဲ!";
-            } else {
-                document.getElementById('status').innerText = "အရသာရှိတဲ့ လက်ဖက်သုပ် ရပါပြီ! လက်ရာကောင်းတယ်!";
-            }
+<script>
+    let currentMix = [];
+    function select(item) {
+        currentMix.push(item);
+        document.getElementById('mix').innerText = currentMix.join(' + ');
+    }
+
+    function check() {
+        if (currentMix.includes('發酵茶葉') && currentMix.includes('酥炸豆類')) {
+            document.getElementById('result').innerText = "🎉 烹飪成功！這就是家鄉的味道！";
+        } else {
+            document.getElementById('result').innerText = "❌ 烹飪失敗！你遺漏了靈魂食材（發酵茶葉或酥炸豆類）。";
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
